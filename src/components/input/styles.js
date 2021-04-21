@@ -5,11 +5,11 @@ export default StyleSheet.create({
   container: {
     backgroundColor: Colors.sacandAppBackgroundColor,
     borderRadius: 15,
-    padding: 8,
+    paddingVertical: 5.1,
     width: '100%',
-    borderWidth: 1,
     borderColor: Colors.sacandAppBackgroundColor,
     paddingHorizontal: 20,
+    marginBottom: 20,
   },
   textInputContainer: {
     fontFamily: Fonts.regular,
@@ -26,11 +26,5 @@ export default StyleSheet.create({
     paddingRight: 10,
     top: 18,
     right: 10,
-  },
-  errorMessage: {
-    textAlign: 'center',
-    fontFamily: Fonts.bold,
-    fontSize: 16,
-    marginBottom: 3,
   },
 });
