@@ -57,3 +57,50 @@ export const removeItem = async key => {
 export const clearStorage = async () => {
   await AsyncStorage.clear();
 };
+
+/**
+ * handel Login and Register errors
+ * @param {string} error_message
+ */
+export const handelAuthErrors = ({message}) => {
+  const ErrorsTypes = {
+    EMAIL_NOT_FOUND:
+      'There is no user record corresponding to this identifier. The user may have been deleted',
+    INVALID_PASSWORD:
+      'The password is invalid or the user does not have a password',
+    INVALID_EMAIL: 'The email is invalid',
+    INVALID_PASSWORD:
+      'The password is invalid or the user does not have a password',
+    EMAIL_EXISTS: 'The email address is already in use by another account.',
+  };
+  showMessage({
+    message: ErrorsTypes[message],
+    type: 'danger',
+  });
+};
+
+/**
+ * save user data to local storage
+ * @param {object} data
+ */
+export const SaveUserDataHandler = async data => {
+  try {
+    await saveItem('userData', data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+/**
+ * hook to get user data from local storage
+ * @returns object | null | undefined
+ */
+export const useGetUserData = () => {
+  const [userData, setUserData] = useState(undefined);
+  useEffect(() => {
+    getItem('userData').then(data => {
+      setUserData(data);
+    });
+  }, []);
+  return userData;
+};
